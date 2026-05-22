@@ -20,8 +20,12 @@ set -ouex pipefail
 # dnf5 -y copr disable ublue-os/staging
 
 dnf5 config-manager addrepo --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
-dnf5 install -y brave-browser
+dnf5 install -y brave-browser 
 dnf5 config-manager disable brave-browser
+
+curl -L "https://bitwarden.com/download/?app=desktop&platform=linux&variant=rpm" -o /tmp/bitwarden.rpm
+dnf install -y /tmp/bitwarden.rpm
+rm /tmp/bitwarden.rpm
 
 #### Example for enabling a System Unit File
 
